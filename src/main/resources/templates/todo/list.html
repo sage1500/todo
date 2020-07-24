@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link rel="stylesheet" media="all" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <div th:replace="~{fragments/fragment :: messagesPanel}"></div>
+
+    <form th:action="@{/todo/create}" method="post" th:object="${todoForm}">
+            <input type="text" th:field="*{todoTitle}">
+            <span th:if="${#fields.hasErrors('todoTitle')}" th:errors="*{todoTitle}" class="text-error">Error</span>
+            <input type="submit" value="Create Todo">
+        </form>
+    </div>
+
+    <hr>
+    <div id="todoList">
+        <ul>
+            <li th:each="todo : ${todos}">
+                <span th:text="${todo.todoTitle}" th:class="${todo.finished} ? strike : ''"></span>
+                <form th:unless="${todo.finished}" th:action="@{/todo/finish}" method="post" th:object="${todoForm}" class="inline">
+                    <input type="hidden" name="todoId" th:value="${todo.todoId}">
+                    <input type="submit" value="Finish">
+                </form>
+                <form th:action="@{/todo/delete}" method="post" th:object="${todoForm}" class="inline">
+                    <input type="hidden" name="todoId" th:value="${todo.todoId}">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

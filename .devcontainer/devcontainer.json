@@ -1,0 +1,46 @@
+{
+	"name": "Java Dev",
+	"dockerComposeFile": [
+        "docker-compose.extend.yml"
+    ],
+	"service": "dev",
+	"workspaceFolder": "/workspaces/todo",
+	"shutdownAction": "stopCompose",
+	
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"java.home": "/usr/local/openjdk-11"
+	},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"alphabotsec.vscode-eclipse-keybindings",
+		"GabrielBB.vscode-lombok",
+		"naco-siren.gradle-language",
+		"Pivotal.vscode-boot-dev-pack",
+		"Pivotal.vscode-concourse",
+		"Pivotal.vscode-manifest-yaml",
+		"Pivotal.vscode-spring-boot",
+		"redhat.java",
+		"richardwillis.vscode-gradle",
+		"richardwillis.vscode-gradle-extension-pack",
+		"VisualStudioExptTeam.vscodeintellicode",
+		"vscjava.vscode-java-debug",
+		"vscjava.vscode-java-dependency",
+		"vscjava.vscode-java-pack",
+		"vscjava.vscode-java-test",
+		"vscjava.vscode-maven",
+		"vscjava.vscode-spring-boot-dashboard",
+		"vscjava.vscode-spring-initializr"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	// Comment out to run as root instead.
+	"remoteUser": "vscode"
+}

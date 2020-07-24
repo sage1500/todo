@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>fragment</title>
+</head>
+
+<body>
+    <div th:fragment="messagesPanel" th:if="${resultMessages?.isNotEmpty()}">
+        <ul th:class="${resultMessages.type.type eq 'success'} ? 'alert-success' : 'alert-error'">
+            <li th:each="msg : ${resultMessages}" th:text="${msg.text}">
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
