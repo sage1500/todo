@@ -6,9 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ..:/workspaces/todo
+      - ..:/workspaces/todo:delegated
+      - ../../_volume/gradle:/home/vscode/.gradle:delegated
+      - ../../_volume/vscode-server:/home/vscode/.vscode-server:delegated
     ports:
-      - 9080:9080
       - 8080:8080
     command: sleep infinity
 
@@ -20,4 +21,4 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: todo
     volumes:
-      - ./volume/dbdata:/var/lib/postgresql/data
+      - ../../_volume/dbdata:/var/lib/postgresql/data
